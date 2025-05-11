@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
 } from 'react-router'
 
+import { TaskProvider } from '~/contexts/task-context'
 import type { Route } from './+types/root'
 import './app.css'
 
@@ -33,7 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <TaskProvider>{children}</TaskProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
