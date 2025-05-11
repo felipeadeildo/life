@@ -1,87 +1,91 @@
-# Welcome to React Router!
+# 🚀 Life Dashboard
 
-A modern, production-ready template for building full-stack React applications using React Router.
+<img src="public/icon.png" alt="Life Dashboard" width="150" height="150" />
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+A comprehensive personal tracking application to improve productivity, monitor health metrics, and build consistent habits.
 
-## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## 🌟 Overview
 
-## Getting Started
+Life Dashboard is a web-based application designed to help you track and visualize all important aspects of your life in one central location. It serves as a comprehensive dashboard for monitoring your tasks, finances, physical activity, sleep patterns, and nutrition, helping you maintain a balanced and productive lifestyle.
 
-### Installation
+The application uses a weekly sprint system and point-based gamification to motivate consistent progress across multiple life domains.
 
-Install the dependencies:
+Visit the live application at: [life.felipeadeildo.com](https://life.felipeadeildo.com)
 
-```bash
-npm install
-```
+## 🎯 Purpose
 
-### Development
+Modern life demands that we keep track of numerous responsibilities, habits, and health metrics. Life Dashboard aims to:
 
-Start the development server with HMR:
+- 🕒 Reduce procrastination through clear deadlines and visual progress tracking
+- ✅ Improve accountability with systematic habit tracking
+- 📊 Provide data-driven insights about personal productivity and health
+- 🏆 Generate motivation through a points-based reward system
+- 🔄 Create a unified environment for all personal metrics
 
-```bash
-npm run dev
-```
+## ✨ Key Features
 
-Your application will be available at `http://localhost:5173`.
+### 📋 Dashboard
+- **Weekly overview**: Snapshot of all your metrics in one place
+- **Points history**: Track your productivity points over time
+- **Activity heatmap**: Visualize your daily activity patterns
+- **Quick add**: Rapidly input data for all tracking categories
 
-## Building for Production
+### 📝 Task Management
+- **Kanban board**: Organize tasks into "To Do", "In Progress", and "Done" columns
+- **⏱️ Time tracking**: Built-in timer for tasks to track effort
+- **Weekly rollover**: Automatically move incomplete tasks to the next week
+- **Priority system**: Tag tasks by importance, urgency, and complexity
 
-Create a production build:
+### 💰 Finance Tracking
+- **Expense logging**: Record and categorize expenses
+- **Category breakdown**: Visual representation of spending patterns
+- **Weekly summaries**: Monitor spending trends over time
 
-```bash
-npm run build
-```
+### 💪 Health Monitoring
+- **😴 Sleep tracking**: Record sleep time, wake time, and quality
+- **🏃‍♂️ Exercise logging**: Track different types of physical activity
+  - Detailed running metrics (distance, pace, type)
+  - Gym workout tracking (sets, reps, weights)
+- **🍎 Meal tracking**: Monitor caloric intake and meal patterns
 
-## Deployment
+### 📈 Metrics and Analytics
+- **Weekly points system**: Gamified approach to motivate consistency
+- **Progress visualization**: Charts and graphs for all metrics
+- **⚖️ Weight tracking**: Monitor weight changes over time
 
-### Docker Deployment
+## 🔒 Data Privacy
 
-To build and run using Docker:
+All data is stored locally in your browser using IndexedDB, ensuring complete privacy of your personal information. No data is sent to any server, providing you with full control over your personal information.
 
-```bash
-docker build -t my-app .
+## 📖 Usage Guide
 
-# Run the container
-docker run -p 3000:3000 my-app
-```
+### Setting Up Your Dashboard
+1. Start by entering your current weight in the weight tracker
+2. Create your first weekly task list
+3. Begin logging your activities, meals, and sleep patterns
 
-The containerized application can be deployed to any platform that supports Docker, including:
+### Weekly Planning
+Each Monday, review your dashboard and:
+1. Set goals for the week
+2. Create tasks with priorities
+3. Plan your workout schedule
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+### Daily Tracking
+1. Log your sleep from the previous night
+2. Track meals throughout the day
+3. Record exercises as you complete them
+4. Use the time tracker while working on tasks
+5. Log expenses as they occur
 
-### DIY Deployment
+### Weekly Review
+Each Sunday:
+1. Review your point totals
+2. Analyze which areas need improvement
+3. Celebrate your achievements
+4. Let uncompleted tasks roll over to next week
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
+## 🙏 Acknowledgments
 
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+- Inspired by productivity systems like Pomodoro, Kanban
+- Built as a solution to combat procrastination and improve personal accountability
