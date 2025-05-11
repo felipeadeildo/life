@@ -8,17 +8,24 @@ interface TaskDBSchema extends DBSchema {
   }
 }
 
-class TaskService {
-  private db: Promise<IDBPDatabase<TaskDBSchema>>
+export class TaskService {
+  private _db: Promise<IDBPDatabase<TaskDBSchema>> | null = null
 
-  constructor() {
-    this.db = openDB<TaskDBSchema>('tasks', 1, {
-      upgrade(db) {
-        if (!db.objectStoreNames.contains('tasks')) {
-          db.createObjectStore('tasks', { keyPath: 'id' })
-        }
-      },
-    })
+  private get db() {
+    if (!this._db) {
+      if (typeof window === 'undefined' || !window.indexedDB) {
+        throw new Error('IndexedDB is not available in this environment')
+      }
+
+      this._db = openDB<TaskDBSchema>('tasks', 1, {
+        upgrade(db) {
+          if (!db.objectStoreNames.contains('tasks')) {
+            db.createObjectStore('tasks', { keyPath: 'id' })
+          }
+        },
+      })
+    }
+    return this._db
   }
 
   async add(task: Omit<Task, 'id'>): Promise<string> {
@@ -37,6 +44,9 @@ class TaskService {
     const db = await this.db
     await db.delete('tasks', id)
   }
-}
 
-export const taskService = new TaskService()
+  async update(id: string, task: Task): Promise<void> {
+    const db = await this.db
+    await db.put('tasks', { ...task, id })
+  }
+}

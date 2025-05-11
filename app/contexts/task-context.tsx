@@ -1,5 +1,11 @@
-import React, { createContext, useCallback, useEffect, useState } from 'react'
-import { taskService } from '~/services/task'
+import React, {
+  createContext,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
+import { TaskService } from '~/services/task'
 import type { Task } from '~/types/task'
 
 interface TaskContextType {
@@ -8,6 +14,7 @@ interface TaskContextType {
   error: Error | null
   addTask: (task: Omit<Task, 'id'>) => Promise<string>
   deleteTask: (id: string) => Promise<void>
+  updateTask: (id: string, task: Task) => Promise<void>
   refreshTasks: () => Promise<void>
 }
 
@@ -17,6 +24,8 @@ export function TaskProvider({ children }: { children: React.ReactNode }) {
   const [tasks, setTasks] = useState<Task[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
+
+  const taskService = useMemo(() => new TaskService(), [])
 
   const refreshTasks = useCallback(async () => {
     try {
@@ -31,7 +40,7 @@ export function TaskProvider({ children }: { children: React.ReactNode }) {
     } finally {
       setIsLoading(false)
     }
-  }, [])
+  }, [taskService])
 
   const addTask = useCallback(
     async (taskData: Omit<Task, 'id'>): Promise<string> => {
@@ -47,7 +56,7 @@ export function TaskProvider({ children }: { children: React.ReactNode }) {
         throw error
       }
     },
-    [refreshTasks]
+    [refreshTasks, taskService]
   )
 
   const deleteTask = useCallback(
@@ -58,12 +67,28 @@ export function TaskProvider({ children }: { children: React.ReactNode }) {
         await refreshTasks()
       } catch (err) {
         const error =
-          err instanceof Error ? err : new Error('Failed to delete task')
+          err instanceof Error ? err : new Error('Falha ao deletar tarefa')
         setError(error)
         throw error
       }
     },
-    [refreshTasks]
+    [refreshTasks, taskService]
+  )
+
+  const updateTask = useCallback(
+    async (id: string, taskData: Task): Promise<void> => {
+      try {
+        setError(null)
+        await taskService.update(id, taskData)
+        await refreshTasks()
+      } catch (err) {
+        const error =
+          err instanceof Error ? err : new Error('Falha ao atualizar tarefa')
+        setError(error)
+        throw error
+      }
+    },
+    [refreshTasks, taskService]
   )
 
   useEffect(() => {
@@ -76,6 +101,7 @@ export function TaskProvider({ children }: { children: React.ReactNode }) {
     error,
     addTask,
     deleteTask,
+    updateTask,
     refreshTasks,
   }
 
