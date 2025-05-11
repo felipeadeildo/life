@@ -3,7 +3,7 @@
   "bracketSpacing": true,
   "printWidth": 80,
   "quoteProps": "as-needed",
-  "semi": true,
+  "semi": false,
   "singleQuote": true,
   "tabWidth": 2,
   "trailingComma": "es5",

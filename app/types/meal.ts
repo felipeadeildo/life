@@ -1,10 +1,10 @@
 export interface Meal {
-  id: string;
-  name: string;
-  description: string;
-  calories: number;
-  time: Date;
-  category: MealCategory;
+  id: string
+  name: string
+  description: string
+  calories: number
+  time: Date
+  category: MealCategory
 }
 
 export enum MealCategory {

@@ -1,9 +1,9 @@
 export interface Expense {
-  id: string;
-  amount: number;
-  category: ExpenseCategory;
-  description: string;
-  date: Date;
+  id: string
+  amount: number
+  category: ExpenseCategory
+  description: string
+  date: Date
 }
 
 export enum ExpenseCategory {
